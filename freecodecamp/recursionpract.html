@@ -8,6 +8,8 @@
 </head>
 <body>
 	<script>
+
+		// Solution 1
 		function countup(n) {
   			if (n < 1) {
     			return [];
@@ -17,7 +19,58 @@
     			return countArray;
   			}
 		}
+
 		console.log(countup(5));
+
+		// function hello(message) {
+		// 	console.log(message);
+		// }
+		// function there(message) {
+		// 	hello("hello");
+		// 	console.log(message);
+		// }
+		// function ed(message) {
+		// 	there("there")
+		// 	console.log(message);
+		// }
+		// ed("ed");
+
+		// Solution 2
+		function countdown(n) {
+  			if (n < 1) {
+    		return [];
+  			} else {
+    			const arr = countdown(n - 1);
+    			arr.splice(0, 0, n);
+    			return arr;
+  			}
+		}
+
+		console.log(countdown(5));
+
+		// Solution 3
+		function countdown(n){
+   			return n < 1 ? [] : [n].concat(countdown(n - 1));
+		}
+
+		console.log(countdown(5));
+
+		// Solution 4
+		function countdown(n){
+			return n < 1 ? [] : [n, ...countdown(n - 1)];
+		}
+
+		console.log(countdown(5));
+
+		// Solution 5
+		function countdown(n) {
+    		return [n].concat(n > 1 ? countdown(n - 1) : []);
+		}
+
+		console.log(countdown(5));
+
+
+
 	</script>
 </body>
 </html>
