@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// We have defined a function named rangeOfNumbers with two parameters. The function should return an array of integers which begins with a number represented by the startNum parameter and ends with a number represented by the endNum parameter. The starting number will always be less than or equal to the ending number. Your function must use recursion by calling itself and not use loops of any kind. It should also work for cases where both startNum and endNum are the same.
+
+		// Why doesn't this solution work?
+		function rangeOfNumbers(startNum, endNum) {
+			  if (endNum === startNum) {
+				return [];
+			  } else {
+				const rangeArray = rangeOfNumbers(startNum, endNum - 1);
+				rangeArray.push(endNum);
+				return rangeArray;
+			  }
+		}
+		/* It doesn't work because the base case doesn't return the starting number; it returns an empty array--which means the array that is finally returned will begin with starting number +1, rather than starting number.
+		*/
+
+		// We can correct the problem with the code above by making the base case return an array that has the starting number in it:
+
+		function rangeOfNumbers(startNum, endNum) {
+			  if (endNum === startNum) {
+				return [startNum];
+			  } else {
+				const rangeArray = rangeOfNumbers(startNum, endNum - 1);
+				rangeArray.push(endNum);
+				return rangeArray;
+			  }
+		}
+
+
+		// Why does this solution work?
+		function rangeOfNumbers(startNum, endNum) {
+			  if (endNum < startNum) {
+				return [];
+			  } else {
+				const rangeArray = rangeOfNumbers(startNum, endNum - 1);
+				rangeArray.push(endNum);
+				return rangeArray;
+			  }
+		}
+	</script>
+</body>
+</html>
